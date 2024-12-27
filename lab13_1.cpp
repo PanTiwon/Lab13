@@ -19,3 +19,23 @@ int main(){
     cout << "Min = " << B[5];
     return 0;
 }
+
+void stat(const double A[],int N,double B[]){
+    double sum = 0, sum2 = 0,sum3= 0, sum4 = 0;
+    double max = A[0];
+    double min = A[0];
+    for(int i = 0; i < N; i++){
+        sum += A[i]; // ผลรวม 
+        sum2 += pow(A[i],2); // ผลรวมกำลังสอง
+        sum3 += log(A[i]); // ln(A[i])
+        sum4 += 1/A[i]; 
+        if(A[i] > max) max = A[i];
+        if(A[i] < min) min = A[i];
+    }
+    B[0] = sum/N; //ค่าเฉลี่ย
+    B[1] = sqrt((sum2/N)-pow(sum/N,2)); //ค่าเบี่ยงเบนมาตรฐาน
+    B[2] = exp(sum3/N); //ค่าเฉลี่ยเรขาคณิต
+    B[3] = N/sum4; //ค่าเฉลี่ยเฮอร์โมนิก
+    B[4] = max; //ค่ามากที่สุด
+    B[5] = min; //ค่าน้อยที่สุด
+}
